@@ -45,6 +45,7 @@ if (enabled == 'true') {
     keyboard.innerHTML = `
         <div class="sidebar"></div>
         <div class="keysFrame"></div>
+        <div class="pageFrame"></div>
     `
 
     const textPreview = document.createElement('div')
@@ -82,6 +83,19 @@ if (enabled == 'true') {
             ]
         ]
     }
+
+
+    const pages = [
+        `<div class="dictatePage page" page-name="dictate">
+            <button class="dictatorBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dictateIcon">
+                    <path d="M8.80127 6.44894C8.80127 4.68221 10.2335 3.25 12.0002 3.25C13.7669 3.25 15.1991 4.68221 15.1991 6.44894V11.3982C15.1991 13.165 13.7669 14.5972 12.0002 14.5972C10.2335 14.5972 8.80127 13.165 8.80127 11.3982V6.44894Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.97119 11.4023C5.97119 10.9881 5.6354 10.6523 5.22119 10.6523C4.80698 10.6523 4.47119 10.9881 4.47119 11.4023H5.97119ZM19.529 11.4023C19.529 10.9881 19.1932 10.6523 18.779 10.6523C18.3648 10.6523 18.029 10.9881 18.029 11.4023H19.529ZM11.2501 20.75C11.2501 21.1642 11.5859 21.5 12.0001 21.5C12.4143 21.5 12.7501 21.1642 12.7501 20.75L11.2501 20.75ZM12.0001 17.4312C8.67042 17.4312 5.97119 14.732 5.97119 11.4023H4.47119C4.47119 15.5604 7.84199 18.9312 12.0001 18.9312V17.4312ZM18.029 11.4023C18.029 14.732 15.3297 17.4312 12.0001 17.4312V18.9312C16.1582 18.9312 19.529 15.5604 19.529 11.4023H18.029ZM11.2501 18.1812L11.2501 20.75L12.7501 20.75L12.7501 18.1812L11.2501 18.1812Z" fill="black"/>
+                </svg>
+            </div>
+            <div class="dictationHint">Error: This page was not loaded correctly.</div>
+        </div>`
+    ]
 
     let keyboardLayout = keyboardLayouts.default
     let currentPage = 0
@@ -254,6 +268,7 @@ if (enabled == 'true') {
             itemEl.innerHTML = item
             itemEl.classList.add(itemEl.querySelector('svg').getAttribute('item-class'))
             sidebarItemCt.append(itemEl)
+
         })
 
         sidebarFrame.append(sidebarItemCt)
@@ -268,8 +283,30 @@ if (enabled == 'true') {
                 </button>
             </div>
         `
+
+        sidebarFrame.querySelectorAll('button.sidebarItem').forEach(element => {
+            element.addEventListener('click', (e) => {
+                switch (element.querySelector('svg').getAttribute('item-class')) {
+                    case 'moreBtn':
+                        openPage('options')
+                        break;
+                    case 'emojiBtn':
+                        break;
+                    case 'dictateBtn':
+                        openPage('dictate')
+                        break;
+                }
+            })
+        })
     }
     createSidebar(0)
+
+    function openPage(pageId) {
+        const pageFrame = keyboard.querySelector('.pageFrame')
+        keyboard.classList.add('pageFrameVisible')
+
+
+    }
 
 
     function openKeyboard(input) {
@@ -300,7 +337,7 @@ if (enabled == 'true') {
     window.addEventListener('click', (e) => {
         if (keyboardOpen) {
             if (document.elementsFromPoint(e.x, e.y).indexOf(currentInput) > -1 || document.elementsFromPoint(e.x, e.y).indexOf(keyboard) > -1) {
-                
+
             } else {
                 closeKeyboard()
             }

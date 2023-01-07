@@ -12,12 +12,13 @@ input {
 
 .keyboard {
   position: absolute;
-  background: rgb(241, 245, 251);
-  --accent: rgb(11, 111, 250);
+  --keyboard-background: rgb(241 245 251);
+  background: var(--keyboard-background);
+  --accent: rgb(10, 103, 243);
   display: flex;
   --keys-gap: 8px;
   padding: 20px;
-  font-family: "Google Sans", "Segoe UI Variable Text", sans-serif;
+  font-family: "Google Sans", "Google Sans Text", "Segoe UI Variable Text", sans-serif;
   --key-width: 6vw;
   gap: 15px;
 }
@@ -152,7 +153,34 @@ input {
   word-wrap: normal;
   width: 120px;
 }
+.keyboard .pageFrame {
+  width: 100%;
+  background: var(--keyboard-background);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.keyboard.pageFrameVisible {
+  overflow-y: clip;
+}
+.keyboard.pageFrameVisible .pageFrame {
+  display: flex;
+}
+.keyboard.pageFrameVisible .pageFrame[active-page=options] {
+  animation: pfOpen 0.2s ease-in-out;
+}
 
+@keyframes pfOpen {
+  from {
+    transform: translateY(-100%);
+  }
+}
 .keyboard::selection {
   background: var(--accent);
 }
