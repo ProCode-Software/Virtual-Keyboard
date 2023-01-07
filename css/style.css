@@ -69,7 +69,7 @@ input {
   border-radius: 10px;
 }
 .keyboard .keysFrame .keyboardRow .key.modifier {
-  background: rgb(210, 216, 227);
+  background: rgb(216, 221, 231);
   width: 100%;
   max-width: 10vw;
   border: none;
@@ -169,6 +169,11 @@ input {
   color: #000;
 }
 
+@media screen and (min-width: 420px) and (max-width: 499px) {
+  .keysFrame {
+    --key-width: 8vw !important;
+  }
+}
 @media screen and (max-width: 500px) {
   .keyboard {
     flex-direction: column;
