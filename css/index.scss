@@ -13,7 +13,7 @@ input {
 .keyboard {
     position: absolute;
     background: rgb(235, 240, 246);
-    --accent: rgb(1, 76, 238);
+    --accent: rgb(0, 81, 255);
     display: flex;
     --keys-gap: 8px;
     padding: 20px;
@@ -200,6 +200,9 @@ input {
 
         .keysFrame {
             padding-inline: 10px;
+            padding-bottom: 20px;
+            --key-width: 6.5vw;
+            --keys-gap: 7px;
         }
 
         .sidebar {
