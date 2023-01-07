@@ -14,7 +14,7 @@ input {
     position: absolute;
     background: rgb(241 245 251);
     // background: rgb(235, 240, 246);
-    --accent: rgb(0, 81, 255);
+    --accent: rgb(11, 111, 250);
     display: flex;
     --keys-gap: 8px;
     padding: 20px;
@@ -241,6 +241,11 @@ input {
             padding: 0;
             justify-content: center;
             text-align: center;
+        }
+        .key.spaceBar {
+            padding-inline: 15vw !important;
+            min-width: none;
+            max-width: none;
         }
     }
 }
