@@ -12,7 +12,8 @@ input {
 
 .keyboard {
     position: absolute;
-    background: rgb(235, 240, 246);
+    background: rgb(241 245 251);
+    // background: rgb(235, 240, 246);
     --accent: rgb(0, 81, 255);
     display: flex;
     --keys-gap: 8px;
@@ -219,6 +220,9 @@ input {
             }
             padding: 10px 10px 0px 10px;
             border-radius: 14px 14px 0 0;
+        }
+        .key {
+            font-size: 17px;
         }
     }
 }
