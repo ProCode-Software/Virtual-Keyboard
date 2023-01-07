@@ -142,9 +142,11 @@ input {
                 padding: 7px;
                 background: none;
                 transition: .15s;
+
                 &:hover {
                     background: rgb(154, 163, 173, .15);
                 }
+
                 svg {
                     display: flex;
                     color: rgb(92, 101, 110);
@@ -152,6 +154,39 @@ input {
             }
         }
     }
+
+    .textPreview {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        padding: 12px;
+        padding-bottom: 6px;
+
+        div {
+            background: rgb(255, 255, 255, 1);
+            width: 100%;
+            display: flex;
+            border: 1px solid #eee;
+            border: 1px solid rgba(144, 163, 186, 0.2);
+            box-shadow: 0 8px 20px rgba(157, 170, 185, 0.15);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin: 0;
+            outline: none;
+            font-size: 16px;
+            align-items: flex-start;
+            height: 100%;
+            word-wrap: normal;
+            width: 120px;
+        }
+
+        display: none;
+    }
+}
+
+.keyboard::selection {
+    background: var(--accent);
 }
 
 .keyboard.docked {
@@ -185,6 +220,7 @@ input {
 
 .keyboard[caps-level="2"] .shiftKey {
     transition: .15s !important;
+
     svg {
         fill: currentColor !important;
     }
@@ -195,6 +231,7 @@ input {
         fill: currentColor;
     }
 }
+
 .sampleInput {
     color: #000;
 }
@@ -224,24 +261,30 @@ input {
             .sidebarItemFrame {
                 flex-direction: row;
             }
-            padding: 10px 10px 0px 10px;
+
+            padding: 0px 10px 0px 10px;
             border-radius: 14px 14px 0 0;
         }
+
         .key {
             font-size: 17px;
         }
+
         .key.modifier {
             max-width: none !important;
             width: 100% !important;
         }
+
         .keyboardRow {
             width: 100% !important;
         }
+
         .keyboardRow[row-number="3"] .key.modifier {
             padding: 0;
             justify-content: center;
             text-align: center;
         }
+
         .key.spaceBar {
             padding-inline: 15vw !important;
             min-width: none;
@@ -249,11 +292,19 @@ input {
         }
     }
 }
+
 .key.backspaceKey:hover svg {
     #b1 {
         fill: currentColor;
     }
+
     #x2 {
         stroke: #e0e0e0;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .textPreview {
+        display: flex !important;
     }
 }

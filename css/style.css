@@ -126,6 +126,36 @@ input {
   display: flex;
   color: rgb(92, 101, 110);
 }
+.keyboard .textPreview {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  padding-bottom: 6px;
+  display: none;
+}
+.keyboard .textPreview div {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  border: 1px solid #eee;
+  border: 1px solid rgba(144, 163, 186, 0.2);
+  box-shadow: 0 8px 20px rgba(157, 170, 185, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0;
+  outline: none;
+  font-size: 16px;
+  align-items: flex-start;
+  height: 100%;
+  word-wrap: normal;
+  width: 120px;
+}
+
+.keyboard::selection {
+  background: var(--accent);
+}
 
 .keyboard.docked {
   bottom: 0;
@@ -188,7 +218,7 @@ input {
   }
   .keyboard .sidebar {
     flex-direction: row;
-    padding: 10px 10px 0px 10px;
+    padding: 0px 10px 0px 10px;
     border-radius: 14px 14px 0 0;
   }
   .keyboard .sidebar .sidebarItemFrame {
@@ -220,6 +250,12 @@ input {
 }
 .key.backspaceKey:hover svg #x2 {
   stroke: #e0e0e0;
+}
+
+@media screen and (max-height: 400px) {
+  .textPreview {
+    display: flex !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

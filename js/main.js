@@ -47,6 +47,15 @@ if (enabled == 'true') {
         <div class="keysFrame"></div>
     `
 
+    const textPreview = document.createElement('div')
+    textPreview.className = 'textPreview'
+
+    textPreview.innerHTML = `
+    <div class="textPreviewInput" readonly="true"></div>
+    `
+
+    keyboard.insertBefore(textPreview, keyboard.querySelector('.sidebar'))
+
     let keyboardCapsLevel = 1
     const keyboardLayouts = {
         "default": [
@@ -219,11 +228,13 @@ if (enabled == 'true') {
     function typeKey(key) {
         if (currentInput) {
             currentInput.value += key
+            keyboard.querySelector('.textPreviewInput').innerHTML = currentInput.value
         }
     }
     function backspace() {
         if (currentInput) {
             currentInput.value = currentInput.value.substring(0, currentInput.value.length - 1)
+            keyboard.querySelector('.textPreviewInput').innerHTML = currentInput.value
         }
     }
 
