@@ -224,6 +224,18 @@ input {
         .key {
             font-size: 17px;
         }
+        .key.modifier {
+            max-width: none !important;
+            width: 100% !important;
+        }
+        .keyboardRow {
+            width: 100% !important;
+        }
+        .keyboardRow[row-number="3"] .key.modifier {
+            padding: 0;
+            justify-content: center;
+            text-align: center;
+        }
     }
 }
 .key.backspaceKey:hover svg {

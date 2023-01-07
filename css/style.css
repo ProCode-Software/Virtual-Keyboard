@@ -192,6 +192,18 @@ input {
   .keyboard .key {
     font-size: 17px;
   }
+  .keyboard .key.modifier {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  .keyboard .keyboardRow {
+    width: 100% !important;
+  }
+  .keyboard .keyboardRow[row-number="3"] .key.modifier {
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+  }
 }
 .key.backspaceKey:hover svg #b1 {
   fill: currentColor;
