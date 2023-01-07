@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+input {
+    font-family: inherit;
+}
+
+.keyboard {
+    position: absolute;
+    background: rgb(235, 240, 246);
+    --accent: rgb(14, 115, 238);
+    display: flex;
+    --keys-gap: 8px;
+    padding: 20px;
+    font-family: 'Google Sans', 'Segoe UI Variable Text', sans-serif;
+    --key-width: 6vw;
+    gap: 15px;
+
+    .keysFrame {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--keys-gap);
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+
+        .keyboardRow {
+            display: flex;
+            flex-direction: row;
+            gap: var(--keys-gap);
+            width: 100%;
+            justify-content: center;
+            height: 100%;
+            width: calc((var(--key-width) + var(--keys-gap)) * 9 + var(--key-width));
+
+            .key {
+                width: var(--key-width);
+                height: 100%;
+                font-family: inherit;
+                font-size: 20px; //20px
+                padding: 0 15px;
+                margin: 0;
+                outline: none;
+                border-radius: 8px;
+                border: 1px solid rgba(144, 163, 186, 0.1);
+                border-bottom: 2px solid rgba(157, 170, 185, 0.3);
+                background: #fff;
+                box-shadow: 0 8px 20px rgba(157, 170, 185, 0.1), 0 1px 8px rgba(116, 128, 142, 0.05);
+                transition: .1s ease-in-out;
+                color: rgb(52, 58, 65);
+                min-width: var(--key-width);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+
+
+                &:hover {
+                    background: rgb(242, 246, 251);
+                }
+
+                &:active {
+                    background: rgb(198, 204, 212);
+                    transform: scale(.93);
+                    box-shadow: 0 8px 20px rgba(157, 170, 185, 0.2), 0 1px 8px rgba(116, 128, 142, 0.05);
+                    border-radius: 10px;
+                }
+
+                user-select: none;
+
+                &.modifier {
+                    background: rgb(210, 216, 227);
+                    width: 100%;
+                    max-width: 10vw;
+
+                    &:hover {
+                        background: rgb(199, 208, 219);
+                    }
+
+                    &:active {
+                        background: rgb(172, 182, 195);
+                    }
+                }
+
+                &.spaceBar {
+                    width: 100%;
+                    font-size: 0.9em;
+                    color: rgba(116, 128, 142, 0.536);
+                }
+            }
+
+            .key {
+
+                &.shiftKey,
+                &.numbersKey,
+                &.lettersKey,
+                &.symbolsKey {
+                    justify-content: left;
+                }
+
+                &.enterKey,
+                &.backspaceKey {
+                    justify-content: right;
+                }
+            }
+        }
+
+        .keyboardRow[row-number="3"] .key.modifier {
+            width: 100%;
+            max-width: none;
+        }
+
+        .keyboardRow[row-number="4"] .key.modifier {
+            width: 100%;
+            max-width: 12vw;
+        }
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .sidebarItemFrame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            .sidebarItem {
+                border-radius: 50%;
+                border: none;
+                outline: none;
+                padding: 7px;
+                background: none;
+                transition: .15s;
+                &:hover {
+                    background: rgb(154, 163, 173, .15);
+                }
+                svg {
+                    display: flex;
+                    color: rgb(92, 101, 110);
+                }
+            }
+        }
+    }
+}
+
+.keyboard.docked {
+    bottom: 0;
+    left: 50%;
+    height: 45%;
+    min-height: 200px;
+    width: 100%;
+    transform: translateX(-50%);
+    max-width: 1100px;
+    max-height: 450px;
+    animation: keyboardDockedOpen .1s ease-in-out;
+    border-radius: 14px 14px 0 0;
+}
+
+@keyframes keyboardDockedOpen {
+    from {
+        transform: translateY(100%) translateX(-50%);
+    }
+
+    to {
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+.keyboard[caps-level="2"] .shiftKey,
+.keyboard[caps-level="3"] .shiftKey {
+    background: var(--accent) !important;
+    color: #fff !important;
+    transition: .15s !important;
+}
+
+.keyboard[caps-level="3"] .shiftKey {
+    #shiftIcon {
+        fill: currentColor;
+    }
+}
+.sampleInput {
+    color: #000;
+}
+
+@media screen and (max-width: 500px) {
+    .keyboard {
+        flex-direction: column;
+        padding: 0px;
+        gap: 10px;
+
+        .keysFrame {
+            padding-inline: 10px;
+        }
+
+        .sidebar {
+            flex-direction: row;
+
+            .sidebarItemFrame {
+                flex-direction: row;
+            }
+            padding: 10px 10px 0px 10px;
+            border-radius: 14px 14px 0 0;
+        }
+    }
+}

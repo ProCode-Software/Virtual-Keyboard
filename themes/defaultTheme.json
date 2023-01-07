@@ -1,0 +1,18 @@
+{
+    "name": "Default",
+    "theme-version": 1,
+    "themeSettings": {
+        "keyboard": {
+            "backgroundType": "solid",
+            "color": "#ff496c"
+        },
+        "modifierKeys": {
+            "color": "rgb(0,0,0,0.1)",
+            "foreground": "#000"
+        },
+        "keys": {
+            "color": "#fff",
+            "foreground": "#000"
+        }
+    }
+}
