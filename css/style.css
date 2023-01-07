@@ -148,11 +148,17 @@ input {
     transform: translateY(0) translateX(-50%);
   }
 }
-.keyboard[caps-level="2"] .shiftKey,
 .keyboard[caps-level="3"] .shiftKey {
   background: var(--accent) !important;
   color: #fff !important;
   transition: 0.15s !important;
+}
+
+.keyboard[caps-level="2"] .shiftKey {
+  transition: 0.15s !important;
+}
+.keyboard[caps-level="2"] .shiftKey svg {
+  fill: currentColor !important;
 }
 
 .keyboard[caps-level="3"] .shiftKey #shiftIcon {
@@ -183,6 +189,12 @@ input {
   .keyboard .sidebar .sidebarItemFrame {
     flex-direction: row;
   }
+}
+.key.backspaceKey:hover svg #b1 {
+  fill: currentColor;
+}
+.key.backspaceKey:hover svg #x2 {
+  stroke: #e0e0e0;
 }
 
 /*# sourceMappingURL=style.css.map */
