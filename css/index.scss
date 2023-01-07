@@ -13,7 +13,7 @@ input {
 .keyboard {
     position: absolute;
     background: rgb(235, 240, 246);
-    --accent: rgb(14, 115, 238);
+    --accent: rgb(1, 76, 238);
     display: flex;
     --keys-gap: 8px;
     padding: 20px;
@@ -49,9 +49,8 @@ input {
                 outline: none;
                 border-radius: 8px;
                 border: 1px solid rgba(144, 163, 186, 0.1);
-                border-bottom: 2px solid rgba(157, 170, 185, 0.3);
                 background: #fff;
-                box-shadow: 0 8px 20px rgba(157, 170, 185, 0.1), 0 1px 8px rgba(116, 128, 142, 0.05);
+                box-shadow: 0 1.5px 1.3px -0.5px rgba(157, 172, 188, 0.2), 0 8px 20px rgba(157, 170, 185, 0.1);
                 transition: .1s ease-in-out;
                 color: rgb(52, 58, 65);
                 min-width: var(--key-width);
@@ -78,6 +77,8 @@ input {
                     background: rgb(210, 216, 227);
                     width: 100%;
                     max-width: 10vw;
+                    border: none;
+                    color: rgb(88, 95, 106);
 
                     &:hover {
                         background: rgb(199, 208, 219);
