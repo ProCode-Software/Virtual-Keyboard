@@ -86,7 +86,7 @@ if (enabled == 'true') {
 
 
     const pages = [
-        `<div class="dictatePage page" page-name="dictate">
+        `<div class="dictatePage page">
             <button class="dictatorBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dictateIcon">
                     <path d="M8.80127 6.44894C8.80127 4.68221 10.2335 3.25 12.0002 3.25C13.7669 3.25 15.1991 4.68221 15.1991 6.44894V11.3982C15.1991 13.165 13.7669 14.5972 12.0002 14.5972C10.2335 14.5972 8.80127 13.165 8.80127 11.3982V6.44894Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -293,7 +293,7 @@ if (enabled == 'true') {
                     case 'emojiBtn':
                         break;
                     case 'dictateBtn':
-                        openPage('dictate')
+                        openPage(0)
                         break;
                 }
             })
@@ -301,11 +301,15 @@ if (enabled == 'true') {
     }
     createSidebar(0)
 
-    function openPage(pageId) {
+    function openPage(pageNumber) {
         const pageFrame = keyboard.querySelector('.pageFrame')
         keyboard.classList.add('pageFrameVisible')
 
+        const pageToOpen = pages[pageNumber]
 
+        pageFrame.innerHTML = pageToOpen
+
+        pageFrame.setAttribute('active-page', pageNumber)
     }
 
 
