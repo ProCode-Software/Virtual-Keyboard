@@ -220,6 +220,7 @@ if (enabled == 'true') {
                             }
                         }
                     }
+                    currentInput.focus()
                 })
 
                 rowEl.append(keyEl)
@@ -248,8 +249,12 @@ if (enabled == 'true') {
     }
     function backspace() {
         if (currentInput) {
-            currentInput.value = currentInput.value.substring(0, currentInput.value.length - 1)
-            keyboard.querySelector('.textPreviewInput').innerHTML = currentInput.value
+            const cursorPos = currentInput.selectionStart;
+
+            currentInput.value = currentInput.value.substring(0, cursorPos - 1) + currentInput.value.substring(cursorPos);
+
+            currentInput.selectionStart = cursorPos - 1;
+            currentInput.selectionEnd = cursorPos - 1;
         }
     }
 
@@ -329,7 +334,7 @@ if (enabled == 'true') {
 
 
         if (pageNumber == 0) {
-            const dictatorBtn = pageFrame.querySelector('dictatorBtn')
+            const dictatorBtn = pageFrame.querySelector('.dictatorBtn')
             dictatorBtn.addEventListener('click', () => {
                 dictate(pageFrame)
             })
@@ -340,13 +345,18 @@ if (enabled == 'true') {
 
 
     function dictate(pf) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
         const sr = new SpeechRecognition()
 
         sr.continuous = true
         sr.interimResults = true
         sr.maxAlternatives = Infinity
 
-       
+        sr.start()
+
+        pf.querySelector('.dictatorBtn').addEventListener('click', () => {
+            sr.stop()
+        })
     }
 
 
