@@ -309,6 +309,8 @@ if (enabled == 'true') {
     }
     createSidebar(0)
 
+    let isDictating = false;
+
     function openPage(pageNumber) {
         const pageFrame = keyboard.querySelector('.pageFrame')
         keyboard.classList.add('pageFrameVisible')
@@ -345,18 +347,34 @@ if (enabled == 'true') {
 
 
     function dictate(pf) {
+        const grammar = '#JSGF V1.0; grammar colors; public <color> = delete that | stop dictating | period | comma | exclamation mark | question mark ;'
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
         const sr = new SpeechRecognition()
 
+        const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
+        const speechRecognitionList = new SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        sr.grammars = speechRecognitionList;
         sr.continuous = true
         sr.interimResults = true
         sr.maxAlternatives = Infinity
 
-        sr.start()
-
-        pf.querySelector('.dictatorBtn').addEventListener('click', () => {
+        if (isDictating == false) {
+            sr.start()
+            isDictating = true
+            currentInput.focus()
+        } else {
             sr.stop()
-        })
+            isDictating = false
+            currentInput.focus()
+            writeKeys(0)
+        }
+
+        sr.onResult = (e) => {
+            const word = e.results[0][0].transcript;
+            currentInput.value += word
+            console.log(word);
+        }
     }
 
 
